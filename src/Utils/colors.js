@@ -1,0 +1,26 @@
+const cusColors = {
+    headerBgColor: " #708090 ",
+    bodyBgColor: "#aabfd4",
+    buttonColor: "#152938",
+    inputColor: "grey",
+    switchColorOn: "green",
+    switchColorOff: "blue",
+    offWhite: "#EFEFED",
+    offWhiteDark: "#EAEAE8",
+    offWhiteDarkMore: "#E3E3E1",
+    melaWhite: "#DED8CD",
+    melaWhiteDark: "#CFCAB5",
+    lightBhiegeColor: "#F5EED5",
+    lightPale: "#E2D7C6",
+    midPale: "#FCEECB",
+    darkpale: "#CDC175",
+    lightBlack: "#3D3B34",
+    midBrown: "#8D7252",
+    lightBrown: "#AD9576",
+    darkBrown: "#6D5438",
+    lightRed: "#BA6557",
+    darkRed: "#571A11",
+    midRed: "#702C23",
+    greyishPink: "#D9C8C0"
+}
+export default cusColors;

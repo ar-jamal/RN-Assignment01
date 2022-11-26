@@ -1,5 +1,8 @@
-import React, {useState} from 'react';
-import {Button, SafeAreaView, StyleSheet, Text, TextInput, View} from 'react-native';
+import React, { useState } from 'react';
+import { Button, SafeAreaView, StyleSheet, Text, TextInput, View, Image } from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+import CusInput from './src/Config/Components/input';
+import cusColors from './src/Utils/colors';
 
 function App() {
   const [inputText, setInputText] = useState('');
@@ -7,17 +10,27 @@ function App() {
   return (
     <SafeAreaView style={styles.mainView}>
       <View style={styles.headerView}>
-        <Text style={styles.headerText}>Todo App</Text>
+        {/* <Text style={styles.headerText}>Todo App</Text> */}
+        <View style={styles.imageView}>
+          <Image
+            style={styles.image}
+            source={require("./src/Utils/Images/ProfileIcon.png")} />
+        </View>
       </View>
       <View style={styles.inputView}>
-        <TextInput 
-        style={styles.input}
-         onChangeText={(e) => setInputText(e)}
-         value= {inputText}
-          />
+        <CusInput
+          inputTitle="LOGIN"
+          onChangeText={(e) => setInputText(e)}
+          value={inputText}
+        />
+        <CusInput
+          inputTitle="PASSWORD"
+          onChangeText={(e) => setInputText(e)}
+          value={inputText}
+        />
+        <Button style={styles.button} color={cusColors.darkRed} title='login' />
       </View>
-        <Button color= "yellowgreen" title='Add Todos'/>
-        <Text>{inputText}</Text>
+      <Text>{inputText}</Text>
     </SafeAreaView>
   );
 }
@@ -31,11 +44,12 @@ const styles = StyleSheet.create({
     // justifyContent: 'space-between',
   },
   headerView: {
-    width: '100%',
+    width: '70%',
     height: '10%',
-    alignItems: 'center',
+    marginTop: "10%",
+    alignItems: 'flex-end',
     justifyContent: 'center',
-    backgroundColor: 'brown',
+    backgroundColor: cusColors.darkRed,
   },
   headerText: {
     color: 'white',
@@ -43,13 +57,33 @@ const styles = StyleSheet.create({
     fontSize: 40,
   },
   inputView: {
-    height: 45,
-    width: '70%',
-    borderWidth: 2,
-    borderBottomColor: 'black',
-    marginVertical: 20,
-    // padding: 
+    height: "60%",
+    width: "70%",
+    // marginVertical: 20,
+    borderColor: cusColors.darkRed,
+    padding: 25,
+    justifyContent: "flex-start",
+    backgroundColor: cusColors.lightPale,
   },
+
+  imageView: {
+    width: 50,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    margin: 12,
+    // backgroundColor: cusColors.lightBrown
+  },
+  image: {
+    width: 50,
+    height: 50,
+    color: "blue",
+    // resizeMode: "stretch",
+    borderRadius: 25,
+  },
+  button: {
+    margin: 15
+  }
 });
 
 export default App;
