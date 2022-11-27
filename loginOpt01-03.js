@@ -19,15 +19,15 @@ function App() {
   return (
     <SafeAreaView style={styles.mainView}>
       <View style={styles.headerView}>
+        {/* <Text style={styles.headerText}>Todo App</Text> */}
         <View style={styles.imageView}>
           <Image
             style={styles.image}
-            source={require('./src/Utils/Images/cityImage.jpeg')}
+            source={require('./src/Utils/Images/ProfileIcon.png')}
           />
         </View>
       </View>
       <View style={styles.inputView}>
-        <Text style={styles.headerText}>Login here</Text>
         <CusInput
           inputTitle="EMAIL"
           onChangeText={e => setInputText(e)}
@@ -66,53 +66,59 @@ const styles = StyleSheet.create({
     // justifyContent: 'space-between',
   },
   headerView: {
-    width: '100%',
-    height: '23%',
-    backgroundColor: 'black',
-  },
-  image: {
-    width: '100%',
-    height: '100%',
-    opacity: 0.3,
-  },
-  inputView: {
-    height: '90%',
-    width: '100%',
-    paddingHorizontal: '20%',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    backgroundColor: 'black',
+    width: '70%',
+    height: '10%',
+    marginTop: '10%',
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+    backgroundColor: cusColors.darkRed,
   },
   headerText: {
     color: 'white',
-    fontSize: 20,
-    alignText: "center",
-    padding: 12,
-    marginVertical: 40,
-    borderWidth: 2,
-    borderColor: "white"
+    fontWeight: '800',
+    fontSize: 40,
+  },
+  inputView: {
+    height: '60%',
+    width: '70%',
+    // marginVertical: 20,
+    borderColor: cusColors.darkRed,
+    padding: 25,
+    justifyContent: 'flex-start',
+    backgroundColor: cusColors.lightPale,
+  },
+  imageView: {
+    width: 50,
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 12,
+    // backgroundColor: cusColors.lightBrown
+  },
+  image: {
+    width: 50,
+    height: 50,
+    color: 'blue',
+    // resizeMode: "stretch",
+    borderRadius: 25,
   },
   linkText: {
     width: 78,
-    // marginTop: 12,
-    fontWeight: '600',
-    borderBottomWidth: 1.7,
+    marginTop: 12,
+    fontWeight: "600",
+    borderBottomWidth: 1.5,
     fontSize: 16,
-    alignText: 'flex-start',
     // borderBottomColor: 'black'
     // fontStyle: ""
   },
   button: {
-    width: '100%',
     height: 45,
     padding: 8,
     marginTop: 18,
     fontSize: 18,
+    backgroundColor: cusColors.darkRed,
     alignItems: 'center',
     justifyContent: 'center',
-    // borderBottomWidth: 20,
-    // borderBottomColor: cusColors.darkRed,
-    backgroundColor: cusColors.darkRed,
   },
   buttonText: {
     color: 'white',

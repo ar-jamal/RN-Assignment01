@@ -21,6 +21,7 @@ const cusColors = {
     lightRed: "#BA6557",
     darkRed: "#571A11",
     midRed: "#702C23",
-    greyishPink: "#D9C8C0"
+    greyishPink: "#D9C8C0",
+    mangoYellow: "#f4b201"
 }
 export default cusColors;

@@ -19,15 +19,15 @@ function App() {
   return (
     <SafeAreaView style={styles.mainView}>
       <View style={styles.headerView}>
+        {/* <Text style={styles.headerText}>Todo App</Text> */}
         <View style={styles.imageView}>
           <Image
             style={styles.image}
-            source={require('./src/Utils/Images/cityImage.jpeg')}
+            source={require('./src/Utils/Images/ProfileIcon.png')}
           />
         </View>
       </View>
       <View style={styles.inputView}>
-        <Text style={styles.headerText}>Login here</Text>
         <CusInput
           inputTitle="EMAIL"
           onChangeText={e => setInputText(e)}
@@ -67,30 +67,41 @@ const styles = StyleSheet.create({
   },
   headerView: {
     width: '100%',
-    height: '23%',
-    backgroundColor: 'black',
+    height: '10%',
+    // marginTop: '10%',
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+    backgroundColor: cusColors.darkRed,
   },
-  image: {
-    width: '100%',
-    height: '100%',
-    opacity: 0.3,
-  },
+  // headerText: {
+  //   color: 'white',
+  //   fontWeight: '800',
+  //   fontSize: 40,
+  // },
   inputView: {
     height: '90%',
     width: '100%',
-    paddingHorizontal: '20%',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    backgroundColor: 'black',
+    // marginVertical: 20,
+    borderColor: cusColors.darkRed,
+    padding: '20%',
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+    backgroundColor: cusColors.lightPale,
   },
-  headerText: {
-    color: 'white',
-    fontSize: 20,
-    alignText: "center",
-    padding: 12,
-    marginVertical: 40,
-    borderWidth: 2,
-    borderColor: "white"
+  imageView: {
+    width: 50,
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 12,
+    // backgroundColor: cusColors.lightBrown
+  },
+  image: {
+    width: 50,
+    height: 50,
+    color: 'blue',
+    // resizeMode: "stretch",
+    borderRadius: 25,
   },
   linkText: {
     width: 78,

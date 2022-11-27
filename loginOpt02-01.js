@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {
   Button,
-  SafeAreaView,
+  ImageBackground,
   StyleSheet,
   Text,
   TextInput,
@@ -17,26 +17,30 @@ function App() {
   const [inputText, setInputText] = useState('');
   const [listItems, setListItems] = useState([]);
   return (
-    <SafeAreaView style={styles.mainView}>
-      <View style={styles.headerView}>
-        <View style={styles.imageView}>
-          <Image
-            style={styles.image}
-            source={require('./src/Utils/Images/cityImage.jpeg')}
-          />
-        </View>
-      </View>
+    <ImageBackground
+      style={styles.mainView}
+      source={require('./src/Utils/Images/loginOpt01-Final.jpeg')}>
       <View style={styles.inputView}>
-        <Text style={styles.headerText}>Login here</Text>
+        <CusInput
+          inputTitle="USER NAME"
+          onChangeText={e => setInputText(e)}
+          value={inputText}
+          iconStyle= {{width: 50, height: 50}}
+          iconSource= {require("./src/Utils/Images/emailIcon.png")}
+        />
         <CusInput
           inputTitle="EMAIL"
           onChangeText={e => setInputText(e)}
           value={inputText}
+          iconStyle= {{width: 50, height: 50}}
+          iconSource= {require("./src/Utils/Images/emailIcon.png")}
         />
         <CusInput
           inputTitle="PASSWORD"
           onChangeText={e => setInputText(e)}
           value={inputText}
+          iconStyle= {{width: 46, height: 46,}}
+          iconSource= {require("./src/Utils/Images/passwordIcon.png")}
         />
         <TouchableOpacity
           title="login"
@@ -53,7 +57,7 @@ function App() {
         </TouchableOpacity>
       </View>
       <Text>{inputText}</Text>
-    </SafeAreaView>
+    </ImageBackground>
   );
 }
 
@@ -67,30 +71,40 @@ const styles = StyleSheet.create({
   },
   headerView: {
     width: '100%',
-    height: '23%',
-    backgroundColor: 'black',
+    height: '10%',
+    // marginTop: '10%',
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+    backgroundColor: cusColors.darkRed,
   },
-  image: {
-    width: '100%',
-    height: '100%',
-    opacity: 0.3,
-  },
+  // headerText: {
+  //   color: 'white',
+  //   fontWeight: '800',
+  //   fontSize: 40,
+  // },
   inputView: {
     height: '90%',
     width: '100%',
-    paddingHorizontal: '20%',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    backgroundColor: 'black',
+    // marginVertical: 20,
+    borderColor: cusColors.darkRed,
+    padding: '20%',
+    justifyContent: 'center',
+    alignItems: 'flex-end',
   },
-  headerText: {
-    color: 'white',
-    fontSize: 20,
-    alignText: "center",
-    padding: 12,
-    marginVertical: 40,
-    borderWidth: 2,
-    borderColor: "white"
+  imageView: {
+    width: 50,
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 12,
+    // backgroundColor: cusColors.lightBrown
+  },
+  image: {
+    width: 50,
+    height: 50,
+    color: 'blue',
+    // resizeMode: "stretch",
+    borderRadius: 25,
   },
   linkText: {
     width: 78,
@@ -103,16 +117,18 @@ const styles = StyleSheet.create({
     // fontStyle: ""
   },
   button: {
-    width: '100%',
-    height: 45,
+    width: '110%',
+    height: 60,
     padding: 8,
     marginTop: 18,
     fontSize: 18,
     alignItems: 'center',
     justifyContent: 'center',
-    // borderBottomWidth: 20,
-    // borderBottomColor: cusColors.darkRed,
-    backgroundColor: cusColors.darkRed,
+    borderWidth: 10,
+    borderColor: "white",
+    borderRadius: 45,
+    backgroundColor: "yellowgreen",
+    // backgroundColor: cusColors.darkRed,
   },
   buttonText: {
     color: 'white',
