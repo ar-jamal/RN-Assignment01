@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   SafeAreaView,
@@ -8,19 +8,22 @@ import {
   View,
   Image,
   TouchableOpacity,
+  ImageBackground,
 } from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import CheckBox from 'react-native-check-box';
+import CusIcon from './src/Config/Components/icon';
 import CusInput from './src/Config/Components/input';
 import cusColors from './src/Utils/colors';
 
 function App() {
   const [inputText, setInputText] = useState('');
   const [listItems, setListItems] = useState([]);
+  // const [check]
   return (
     <SafeAreaView style={styles.mainView}>
       <View style={styles.headerView}>
         <View style={styles.imageView}>
-          <Image
+          <ImageBackground
             style={styles.image}
             source={require('./src/Utils/Images/cityImage.jpeg')}
           />
@@ -29,30 +32,47 @@ function App() {
       <View style={styles.inputView}>
         <Text style={styles.headerText}>Login here</Text>
         <CusInput
-          inputTitle="EMAIL"
+          inputTitle="User name"
           onChangeText={e => setInputText(e)}
           value={inputText}
         />
         <CusInput
-          inputTitle="PASSWORD"
+          inputTitle="Email"
+          onChangeText={e => setInputText(e)}
+          value={inputText} 
+        />
+        <CusInput
+          inputTitle="Password"
           onChangeText={e => setInputText(e)}
           value={inputText}
         />
-        <TouchableOpacity
-          title="login"
-          // style={styles.button}
-        >
-          <Text style={styles.linkText}>remind me</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          title="login"
-          style={styles.button}
+        <View style={styles.linkTextView}>
+          <TouchableOpacity
+          >
+            <Text style={[styles.linkText, { width: 92, }]}>forget Password</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+          >
+            <CheckBox onClick={(e) => setCheckValue}/>
+            <Text style={styles.linkText}>Remember me</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={{ width: '100%' }}>
+          <TouchableOpacity
+            title="login"
+            style={styles.button}
           // color={cusColors.darkRed}
-        >
-          <Text style={styles.buttonText}>SUBMIT</Text>
-        </TouchableOpacity>
+          >
+            <Text style={styles.buttonText}>SUBMIT</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-      <Text>{inputText}</Text>
+      <View style={styles.footer}>
+        <Text style={styles.text}>Login to:</Text>
+        <CusIcon source={require('./src/Utils/Images/whatsappIcon.png')} />
+        <CusIcon source={require('./src/Utils/Images/twitterIcon.png')} />
+        <CusIcon source={require('./src/Utils/Images/facebookIcon.png')} />
+      </View>
     </SafeAreaView>
   );
 }
@@ -63,12 +83,13 @@ const styles = StyleSheet.create({
     height: '100%',
     flex: 1,
     alignItems: 'center',
+    backgroundColor: 'black',
+    opacity: 0.88,
     // justifyContent: 'space-between',
   },
   headerView: {
     width: '100%',
-    height: '23%',
-    backgroundColor: 'black',
+    height: '22%',
   },
   image: {
     width: '100%',
@@ -76,49 +97,74 @@ const styles = StyleSheet.create({
     opacity: 0.3,
   },
   inputView: {
-    height: '90%',
+    height: '58%',
     width: '100%',
     paddingHorizontal: '20%',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: 'black',
   },
   headerText: {
-    color: 'white',
+    color: cusColors.lightYellow,
     fontSize: 20,
-    alignText: "center",
+    alignSelf: "center",
     padding: 12,
     marginVertical: 40,
+    marginBottom: 70,
     borderWidth: 2,
-    borderColor: "white"
+    borderColor: cusColors.lightYellow
+  },
+  linkTextView: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   linkText: {
-    width: 78,
+    width: 80,
     // marginTop: 12,
     fontWeight: '600',
     borderBottomWidth: 1.7,
-    fontSize: 16,
+    fontSize: 12,
     alignText: 'flex-start',
-    // borderBottomColor: 'black'
+    marginTop: 8,
+    alignSelf: 'flex-end',
+    color: cusColors.lightYellow,
+    borderBottomColor: cusColors.lightYellow,
     // fontStyle: ""
   },
   button: {
-    width: '100%',
-    height: 45,
+    width: '40%',
+    height: 35,
     padding: 8,
-    marginTop: 18,
+    marginTop: 30,
     fontSize: 18,
     alignItems: 'center',
+    alignSelf: "center",
     justifyContent: 'center',
-    // borderBottomWidth: 20,
-    // borderBottomColor: cusColors.darkRed,
-    backgroundColor: cusColors.darkRed,
+    borderBottomWidth: 3,
+    borderBottomColor: "yellow",
+    backgroundColor: cusColors.onyxBlack,
   },
   buttonText: {
-    color: 'white',
-    fontSize: 17,
+    // color: "black",
+    color: cusColors.lightYellow,
+    fontSize: 14,
     fontWeight: '500',
   },
+  footer: {
+    flexDirection: 'row',
+    width: "100%",
+    height: "20%",
+    // padding: 20,
+    alignItems: "center",
+    justifyContent: "center",
+    // backgroundColor: 'yellow',
+  },
+  text: {
+    color: cusColors.lightYellow,
+    height: 20,
+    marginRight: 10,
+
+  }
 });
 
 export default App;

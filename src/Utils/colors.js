@@ -22,6 +22,15 @@ const cusColors = {
     darkRed: "#571A11",
     midRed: "#702C23",
     greyishPink: "#D9C8C0",
-    mangoYellow: "#f4b201"
+    mangoYellow: "#f4b201",
+    charcoal: "#36454F",
+    matteBlack: "#28282B",
+    darkGreenBlack: "#023020",
+    darkPurple: "#301934",
+    jetBlack: "#343434",
+    onyxBlack: "#353935",
+    blueShade: "#4682b4",
+    lightYellow: "#DAF7A6"
+
 }
 export default cusColors;
