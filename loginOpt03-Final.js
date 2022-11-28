@@ -20,56 +20,55 @@ function App() {
   const [listItems, setListItems] = useState([]);
   return (
     <SafeAreaView style={styles.mainView}>
-      <ImageBackground
-        style={{width: '100%', flex: 1}}
-        source={require('./src/Utils/Images/jungleBackground.jpeg')}>
-        <View style={styles.inputView}>
-          <Image
-          style= {styles.icon}
-           source={require('./src/Utils/Images/ProfileIcon.png')} />
-          {/* <Text style={styles.headerText}>Login here</Text> */}
-          <CusInput
-            inputTitle="User name"
-            onChangeText={e => setInputText(e)}
-            value={inputText}
+      <View style={styles.headerView}>
+        <View style={styles.imageView}>
+          <ImageBackground
+            style={styles.image}
+            source={require('./src/Utils/Images/cityImage.jpeg')}
           />
-          <CusInput
-            inputTitle="Email"
-            onChangeText={e => setInputText(e)}
-            value={inputText}
-          />
-          <CusInput
-            inputTitle="Password"
-            onChangeText={e => setInputText(e)}
-            value={inputText}
-          />
-          <View style={styles.linkTextView}>
-            <TouchableOpacity>
-              <Text style={[styles.linkText, {width: 92}]}>
-                forget Password
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Text style={styles.linkText}>Remember me</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={{width: '100%'}}>
-            <TouchableOpacity
-              title="login"
-              style={styles.button}
-              // color={cusColors.darkRed}
-            >
-              <Text style={styles.buttonText}>SUBMIT</Text>
-            </TouchableOpacity>
-          </View>
         </View>
-        <View style={styles.footer}>
-          <Text style={styles.text}>Login to:</Text>
-          <CusIcon source={require('./src/Utils/Images/whatsappIcon.png')} />
-          <CusIcon source={require('./src/Utils/Images/twitterIcon.png')} />
-          <CusIcon source={require('./src/Utils/Images/facebookIcon.png')} />
+      </View>
+      <View style={styles.inputView}>
+        <Text style={styles.headerText}>Login here</Text>
+        <CusInput
+          inputTitle="User name"
+          onChangeText={e => setInputText(e)}
+          value={inputText}
+        />
+        <CusInput
+          inputTitle="Email"
+          onChangeText={e => setInputText(e)}
+          value={inputText}
+        />
+        <CusInput
+          inputTitle="Password"
+          onChangeText={e => setInputText(e)}
+          value={inputText}
+        />
+        <View style={styles.linkTextView}>
+          <TouchableOpacity>
+            <Text style={[styles.linkText, {width: 92}]}>forget Password</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text style={styles.linkText}>Remember me</Text>
+          </TouchableOpacity>
         </View>
-      </ImageBackground>
+        <View style={{width: '100%'}}>
+          <TouchableOpacity
+            title="login"
+            style={styles.button}
+            // color={cusColors.darkRed}
+          >
+            <Text style={styles.buttonText}>SUBMIT</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+      <View style={styles.footer}>
+        <Text style={styles.text}>Login to:</Text>
+        <CusIcon source={require('./src/Utils/Images/whatsappIcon.png')} />
+        <CusIcon source={require('./src/Utils/Images/twitterIcon.png')} />
+        <CusIcon source={require('./src/Utils/Images/facebookIcon.png')} />
+      </View>
     </SafeAreaView>
   );
 }
@@ -80,17 +79,13 @@ const styles = StyleSheet.create({
     height: '100%',
     flex: 1,
     alignItems: 'center',
-    // backgroundColor: 'black',
+    backgroundColor: 'black',
     opacity: 0.88,
     // justifyContent: 'space-between',
   },
-  icon: {
-    marginTop: 100,
-    marginBottom: 30,
-    width: 120,
-    height: 120,
-    borderRadius: 60, 
-    opacity: .6,
+  headerView: {
+    width: '100%',
+    height: '22%',
   },
   image: {
     width: '100%',
