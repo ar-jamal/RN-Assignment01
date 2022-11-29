@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     iconView: {
         width: 35,
         height: 35,
-        marginHorizontal: 8,
+        marginHorizontal: 4,
         // borderRadius: 20,
         // overflow: "hidden"
     },
@@ -26,5 +26,8 @@ const styles = StyleSheet.create({
         width: "100%",
         height: "100%",
         borderRadius: 20,
+        // borderWidth: 1.5,
+        borderColor: "black"
+        
     }
 });
