@@ -22,7 +22,7 @@ function App() {
   const [index, setIndex] = useState('');
 
   const addHandler = () => {
-    if (inputText > -1) {
+    if (index > -1) {
       listItems[index] = inputText;
       setListItems([...listItems]);
     } else {
@@ -33,54 +33,31 @@ function App() {
     setListItems(...listItems.splice(val, 1));
   };
   const editHandler = ind => {
+    setInputText(listItems[ind]);
     setIndex(ind);
-    setInputText(ind);
   };
   return (
     <SafeAreaView style={styles.mainView}>
-      <ImageBackground
-        style={{width: '100%', flex: 1}}
-        source={require('./src/Utils/Images/jungleBackground.jpeg')}>
-        <View style={styles.inputView}>
-          <Text style={styles.headerText}>Login</Text>
-          <CusInput
-            inputTitle="User name"
-            onChangeText={e => setInputText(e)}
-            value={inputText}
-          />
-          <CusInput
-            inputTitle="Email"
-            onChangeText={e => setInputText(e)}
-            value={inputText}
-          />
-          <CusInput
-            inputTitle="Password"
-            onChangeText={e => setInputText(e)}
-            value={inputText}
-          />
-          <TouchableOpacity>
-            <Text style={[styles.linkText, {width: 92}]}>forget Password</Text>
-          </TouchableOpacity>
-          <View style={styles.linkTextView}>
-            <TouchableOpacity>
-              <Text style={styles.linkText}>Remember me</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              title="login"
-              style={styles.button}
-              // color={cusColors.darkRed}
-            >
-              <Text style={styles.buttonText}>SUBMIT</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.loginOptions}>
-            <Text style={styles.text}>Login with:</Text>
-            <CusIcon source={require('./src/Utils/Images/whatsappIcon.png')} />
-            <CusIcon source={require('./src/Utils/Images/twitterIcon.png')} />
-            <CusIcon source={require('./src/Utils/Images/facebookIcon.png')} />
+      <View style={styles.headerView}>
+        <Text style={styles.headerText}>Todo App</Text>
+      </View>
+      <View style={styles.inputView}>
+        <TextInput
+          style={styles.input}
+          onChangeText={e => setInputText(e)}
+          value={inputText}
+        />
+      </View>
+      <Button color="yellowgreen" title="Add Todos" onPress={addHandler} />
+      {!!listItems && listItems.length > 0 ? (
+        <View style={styles.todoView}>
+          <Text>{inputText}</Text>
+          <View style={styles.endView}>
+            <Button title="edit" onPress={editHandler} />
+            <Button title="delete" onPress={delHandler} />
           </View>
         </View>
-      </ImageBackground>
+      ) : null}
     </SafeAreaView>
   );
 }
@@ -90,72 +67,34 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     flex: 1,
-    opacity: 0.88,
+    alignItems: 'center',
+    // justifyContent: 'space-between',
   },
-  inputView: {
-    height: '100%',
+  headerView: {
     width: '100%',
-    paddingHorizontal: '20%',
+    height: '10%',
+    alignItems: 'center',
     justifyContent: 'center',
-    alignItems: 'flex-start',
-    // backgroundColor: 'yellow',
+    backgroundColor: 'brown',
   },
   headerText: {
-    color: cusColors.lightYellow,
-    fontSize: 35,
-    alignSelf: 'center',
-    marginBottom: 70,
+    color: 'white',
+    fontWeight: '800',
+    fontSize: 40,
+  },
+  inputView: {
+    height: 45,
+    width: '70%',
+    borderWidth: 2,
+    borderBottomColor: 'black',
+    marginVertical: 20,
+    // padding:
   },
   todoView: {
     width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-end',
-    marginBottom: 5,
   },
-  linkText: {
-    width: 80,
-    fontWeight: '600',
-    borderBottomWidth: 1.7,
-    fontSize: 12,
-    marginTop: 8,
-    alignSelf: 'flex-end',
-    color: cusColors.lightYellow,
-    borderBottomColor: 'black',
-  },
-  button: {
-    width: '40%',
-    height: 40,
-    padding: 8,
-    marginTop: 20,
-    fontSize: 18,
-    alignItems: 'center',
-    alignSelf: 'flex-end',
-    justifyContent: 'center',
-    borderBottomWidth: 4,
-    backgroundColor: cusColors.lightYellow,
-  },
-  buttonText: {
-    color: cusColors.onyxBlack,
-    fontSize: 14,
-    fontWeight: 'bold',
-  },
-  loginOptions: {
-    flexDirection: 'row',
-    width: '100%',
-    height: '12%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: cusColors.lightYellow,
-    borderBottomLeftRadius: 70,
-    backgroundColor: cusColors.onyxBlack,
-  },
-  text: {
-    color: cusColors.lightYellow,
-    height: 20,
-    marginRight: 10,
+  endView: {
+    height: '100%',
   },
 });
-
 export default App;
