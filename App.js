@@ -1,3 +1,4 @@
+import {onPress} from 'deprecated-react-native-prop-types/DeprecatedTextPropTypes';
 import React, {useState} from 'react';
 import {
   Button,
@@ -6,70 +7,59 @@ import {
   Text,
   TextInput,
   View,
-  Image,
-  TouchableOpacity,
-  ImageBackground,
 } from 'react-native';
-import CheckBox from 'react-native-check-box';
-import CusIcon from './src/Config/Components/icon';
-import CusInput from './src/Config/Components/input';
 import cusColors from './src/Utils/colors';
 
 function App() {
   const [inputText, setInputText] = useState('');
   const [listItems, setListItems] = useState([]);
+  const [index, setIndex] = useState('');
+
+  const addHandler = () => {
+    if (inputText > -1){
+      listItems[index] = inputText
+      setListItems([...listItems])
+    } else {
+      setListItems([...listItems.push(inputText)]);
+    } 
+  };
+  const delHandler = val => {
+    setListItems(...listItems.splice(val, 1));
+  };
+  const editHandler = ind => {
+    setIndex(ind);
+    setInputText(ind);
+  };
   return (
     <SafeAreaView style={styles.mainView}>
-      <ImageBackground
-        style={{width: '100%', flex: 1}}
-        source={require('./src/Utils/Images/jungleBackground.jpeg')}>
-        <View style={styles.inputView}>
-          <Image
-          style= {styles.icon}
-           source={require('./src/Utils/Images/ProfileIcon.png')} />
-          {/* <Text style={styles.headerText}>Login here</Text> */}
-          <CusInput
-            inputTitle="User name"
-            onChangeText={e => setInputText(e)}
-            value={inputText}
-          />
-          <CusInput
-            inputTitle="Email"
-            onChangeText={e => setInputText(e)}
-            value={inputText}
-          />
-          <CusInput
-            inputTitle="Password"
-            onChangeText={e => setInputText(e)}
-            value={inputText}
-          />
-          <View style={styles.linkTextView}>
-            <TouchableOpacity>
-              <Text style={[styles.linkText, {width: 92}]}>
-                forget Password
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Text style={styles.linkText}>Remember me</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={{width: '100%'}}>
-            <TouchableOpacity
-              title="login"
-              style={styles.button}
-              // color={cusColors.darkRed}
-            >
-              <Text style={styles.buttonText}>SUBMIT</Text>
-            </TouchableOpacity>
+      <View style={styles.headerView}>
+        <Text style={styles.headerText}>Todo App</Text>
+      </View>
+      <View style={styles.inputView}>
+        <TextInput
+          style={styles.input}
+          onChangeText={e => setInputText(e)}
+          value={inputText}
+        />
+      </View>
+      <Button color="yellowgreen" title="Add" onPress={addHandler}/>
+      {listItems.map((e, i) => (
+        <View style={styles.todoView} key={i}>
+          <Text>{inputText}</Text>
+          <View style={styles.endPart}>
+            <Button
+              title="edit"
+              color={cusColors.lightRed}
+              onPress={() => editHandler(i)}
+            />
+            <Button
+              title="delete"
+              color={cusColors.darkRed}
+              onPress={() => delHandler(i)}
+            />
           </View>
         </View>
-        <View style={styles.footer}>
-          <Text style={styles.text}>Login to:</Text>
-          <CusIcon source={require('./src/Utils/Images/whatsappIcon.png')} />
-          <CusIcon source={require('./src/Utils/Images/twitterIcon.png')} />
-          <CusIcon source={require('./src/Utils/Images/facebookIcon.png')} />
-        </View>
-      </ImageBackground>
+      ))}
     </SafeAreaView>
   );
 }
@@ -80,92 +70,36 @@ const styles = StyleSheet.create({
     height: '100%',
     flex: 1,
     alignItems: 'center',
-    // backgroundColor: 'black',
-    opacity: 0.88,
     // justifyContent: 'space-between',
   },
-  icon: {
-    marginTop: 100,
-    marginBottom: 30,
-    width: 120,
-    height: 120,
-    borderRadius: 60, 
-    opacity: .6,
-  },
-  image: {
+  headerView: {
     width: '100%',
-    height: '100%',
-    opacity: 0.3,
-  },
-  inputView: {
-    height: '58%',
-    width: '100%',
-    paddingHorizontal: '20%',
-    justifyContent: 'flex-start',
+    height: '10%',
     alignItems: 'center',
-    // backgroundColor: 'yellow',
+    justifyContent: 'center',
+    backgroundColor: 'brown',
   },
   headerText: {
-    color: cusColors.lightYellow,
-    fontSize: 20,
-    alignSelf: 'center',
-    padding: 12,
-    marginVertical: 40,
-    marginBottom: 70,
-    borderWidth: 2,
-    borderColor: cusColors.lightYellow,
+    color: 'white',
+    fontWeight: '800',
+    fontSize: 40,
   },
-  linkTextView: {
-    width: '100%',
+  inputView: {
+    height: 45,
+    width: '70%',
+    borderWidth: 2,
+    borderBottomColor: 'black',
+    marginVertical: 20,
+    // padding:
+  },
+  todoView: {
+    width: "100%",
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  linkText: {
-    width: 80,
-    // marginTop: 12,
-    fontWeight: '600',
-    borderBottomWidth: 1.7,
-    fontSize: 12,
-    alignText: 'flex-start',
-    marginTop: 8,
-    alignSelf: 'flex-end',
-    color: cusColors.lightYellow,
-    borderBottomColor: cusColors.lightYellow,
-    // fontStyle: ""
-  },
-  button: {
-    width: '40%',
-    height: 35,
-    padding: 8,
-    marginTop: 30,
-    fontSize: 18,
-    alignItems: 'center',
-    alignSelf: 'center',
-    justifyContent: 'center',
-    borderBottomWidth: 3,
-    borderBottomColor: 'yellow',
-    backgroundColor: cusColors.onyxBlack,
-  },
-  buttonText: {
-    // color: "black",
-    color: cusColors.lightYellow,
-    fontSize: 14,
-    fontWeight: '500',
-  },
-  footer: {
-    flexDirection: 'row',
-    width: '100%',
-    height: '20%',
-    // padding: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-    // backgroundColor: 'yellow',
-  },
-  text: {
-    color: cusColors.lightYellow,
-    height: 20,
-    marginRight: 10,
-  },
+  endPart: {
+    height: "100%"
+  }
 });
 
 export default App;
