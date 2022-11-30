@@ -30,7 +30,16 @@ const cusColors = {
     jetBlack: "#343434",
     onyxBlack: "#353935",
     blueShade: "#4682b4",
-    lightYellow: "#DAF7A6"
+    lightYellow: "#DAF7A6",
+    brownShades01: "#2E1308",
+    brownShades02: "#5E3219",
+    brownShades03: "#87553B",
+    brownShades04: "#A67B5B",
+    brownShades05: "#BC9773",
+    brownShades06: "#C8AD7F",
+    brownThemeLight: "#AC9377",
+    brownThemeMid: "#8D7252",
+    brownThemeDark: "#6D5438",
 
 }
 export default cusColors;

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   SafeAreaView,
@@ -6,8 +6,9 @@ import {
   Text,
   TextInput,
   View,
-  ImageBackground,
+  Image,
   TouchableOpacity,
+  ImageBackground,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -19,27 +20,10 @@ import cusColors from './src/Utils/colors';
 function App() {
   const [inputText, setInputText] = useState('');
   const [listItems, setListItems] = useState([]);
-  const [index, setIndex] = useState('');
-
-  const addHandler = () => {
-    if (inputText > -1) {
-      listItems[index] = inputText;
-      setListItems([...listItems]);
-    } else {
-      setListItems([...listItems.push(inputText)]);
-    }
-  };
-  const delHandler = val => {
-    setListItems(...listItems.splice(val, 1));
-  };
-  const editHandler = ind => {
-    setIndex(ind);
-    setInputText(ind);
-  };
   return (
     <SafeAreaView style={styles.mainView}>
       <ImageBackground
-        style={{width: '100%', flex: 1}}
+        style={{ width: '100%', flex: 1 }}
         source={require('./src/Utils/Images/jungleBackground.jpeg')}>
         <View style={styles.inputView}>
           <Text style={styles.headerText}>Login</Text>
@@ -59,7 +43,9 @@ function App() {
             value={inputText}
           />
           <TouchableOpacity>
-            <Text style={[styles.linkText, {width: 92}]}>forget Password</Text>
+            <Text style={[styles.linkText, { width: 92 }]}>
+              forget Password
+            </Text>
           </TouchableOpacity>
           <View style={styles.linkTextView}>
             <TouchableOpacity>
@@ -68,7 +54,7 @@ function App() {
             <TouchableOpacity
               title="login"
               style={styles.button}
-              // color={cusColors.darkRed}
+            // color={cusColors.darkRed}
             >
               <Text style={styles.buttonText}>SUBMIT</Text>
             </TouchableOpacity>
@@ -106,11 +92,11 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginBottom: 70,
   },
-  todoView: {
+  linkTextView: {
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'flex-end',
+    alignItems: "flex-end",
     marginBottom: 5,
   },
   linkText: {
@@ -121,7 +107,7 @@ const styles = StyleSheet.create({
     marginTop: 8,
     alignSelf: 'flex-end',
     color: cusColors.lightYellow,
-    borderBottomColor: 'black',
+    borderBottomColor: "black",
   },
   button: {
     width: '40%',
